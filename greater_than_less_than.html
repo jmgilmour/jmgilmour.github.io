@@ -1,0 +1,206 @@
+<html>
+<head>
+  <style>
+    html, body {
+      margin: 0;
+    }
+
+    #content, #correct-incorrect, #buttons {
+      font-size: 10em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5em;
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 25%;
+    }
+
+    #content {
+      top: 0;
+    }
+
+    #correct-incorrect {
+      top: 33%;
+      font-size: 1em;
+    }
+
+    #correct, #incorrect {
+      width: 7%;
+      display: none;
+    }
+
+    #correct {
+      filter: invert(1) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg) saturate(1000%) contrast(0.8);
+    }
+
+    #incorrect {
+      filter: invert(1) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    }
+
+    #buttons {
+      bottom: 0;
+    }
+
+    #left, #middle, #right {
+      height: 100%;
+    }
+
+    #left, #right {
+      width: 25%;
+    }
+
+    #left {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    #middle {
+      border-bottom: solid 0.05em black;
+      margin: 0.25em;
+      width: 10%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    #middle img {
+      margin-bottom: 0.1em;
+    }
+
+    #less-than, #new-problem, #greater-than {
+      margin: 0.25em;
+      background-color: #e7e7e7;
+      border: none;
+      cursor: pointer;
+      padding: 0.1em;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #middle img, #less-than img, #new-problem img, #greater-than img {
+      width: 0.5em;
+      height: 0.5em;
+    }
+
+    #score {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 5em;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.correctCount = 0;
+    window.incorrectCount = 0;
+
+    function newProblem() {
+      window.left = Math.floor(Math.random() * 101);
+      document.getElementById('left').innerHTML = window.left;
+
+      do {
+        window.right = Math.floor(Math.random() * 101);
+      } while(window.right === window.left);
+      document.getElementById('right').innerHTML = window.right;
+
+      reset();
+    }
+
+    function correct() {
+      window.correctCount = (window.correctCount || 0) + 1;
+      document.getElementById('correct').style.display = 'block';
+      document.getElementById('incorrect').style.display = 'none';
+    }
+
+    function incorrect() {
+      window.incorrectCount = (window.incorrectCount || 0) + 1;
+      document.getElementById('correct').style.display = 'none';
+      document.getElementById('incorrect').style.display = 'block';
+    }
+
+    function updateScore() {
+      document.getElementById('score').innerText = `${window.correctCount} / ${window.correctCount + window.incorrectCount}`;
+    }
+
+    function hideAnswerButtons() {
+      document.getElementById('new-problem').style.display = 'block';
+
+      document.getElementById('less-than').style.display = 'none';
+      document.getElementById('greater-than').style.display = 'none';
+    }
+
+    function reset() {
+      document.getElementById('new-problem').style.display = 'none';
+
+      document.getElementById('less-than').style.display = 'block';
+      document.getElementById('greater-than').style.display = 'block';
+
+      document.getElementById('correct').style.display = 'none';
+      document.getElementById('incorrect').style.display = 'none';
+      document.getElementById('middle').innerHTML = '';
+    }
+
+    function selectLessThan() {
+      hideAnswerButtons();
+      document.getElementById('middle').innerHTML = `<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/less-than.svg">`;
+      if (window.left < window.right) {
+        correct();
+      } else {
+        incorrect();
+      }
+      updateScore();
+    }
+
+    function selectGreaterThan() {
+      hideAnswerButtons();
+      document.getElementById('middle').innerHTML = `<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/greater-than.svg">`;
+      if (window.left > window.right) {
+        correct();
+      } else {
+        incorrect();
+      }
+      updateScore();
+    }
+
+    window.addEventListener('load', () => {
+      newProblem();
+    });
+  </script>
+
+  <div id="content">
+    <div id="left"></div>
+    <div id="middle"></div>
+    <div id="right"></div>
+  </div>
+
+  <div id="correct-incorrect">
+    <div id="correct">
+      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/check.svg">
+    </div>
+    <div id="incorrect">
+      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/times.svg">
+    </div>
+  </div>
+
+  <div id="buttons">
+    <div id="less-than" onclick="selectLessThan()">
+      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/less-than.svg">
+    </div>
+    <div id="new-problem" onclick="newProblem()">
+      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/sync-alt.svg">
+    </div>
+    <div id="greater-than" onclick="selectGreaterThan()">
+      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/greater-than.svg">
+    </div>
+  </div>
+
+  <div id="score">
+  </div>
+</body>
+</html>
