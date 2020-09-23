@@ -1,10 +1,8 @@
 <html>
 <head>
   <!--
-    TODO score in local storage
     TODO better spacing for mobile
     TODO microphone interaction
-    TODO keep same numbers until right answer
   -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
   <style>
@@ -105,7 +103,7 @@
 </head>
 <body>
   <script>
-    window.correctCount = 0;
+    window.score = parseInt(localStorage.getItem('score')) || 0;
     window.incorrectAnswer = false;
 
     function newProblem() {
@@ -123,7 +121,8 @@
     }
 
     function correct() {
-      window.correctCount = (window.correctCount || 0) + 1;
+      window.score += 1;
+      localStorage.setItem('score', window.score);
       document.getElementById('correct').style.display = 'block';
       document.getElementById('incorrect').style.display = 'none';
     }
@@ -135,7 +134,7 @@
     }
 
     function updateScore() {
-      document.getElementById('score').innerText = window.correctCount;
+      document.getElementById('score').innerText = window.score;
     }
 
     function hideAnswerButtons() {
@@ -181,6 +180,7 @@
     }
 
     window.addEventListener('load', () => {
+      updateScore();
       newProblem();
     });
   </script>
