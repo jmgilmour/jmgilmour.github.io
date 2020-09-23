@@ -1,5 +1,11 @@
 <html>
 <head>
+  <!--
+    TODO score in local storage
+    TODO better spacing for mobile
+    TODO microphone interaction
+    TODO keep same numbers until right answer
+  -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
   <style>
     html, body {
@@ -100,14 +106,17 @@
 <body>
   <script>
     window.correctCount = 0;
+    window.incorrectAnswer = false;
 
     function newProblem() {
-      window.left = Math.floor(Math.random() * 101);
-      document.getElementById('left').innerHTML = window.left;
+      if (!window.incorrectAnswer) {
+        window.left = Math.floor(Math.random() * 101);
+        do {
+          window.right = Math.floor(Math.random() * 101);
+        } while(window.right === window.left);
+      }
 
-      do {
-        window.right = Math.floor(Math.random() * 101);
-      } while(window.right === window.left);
+      document.getElementById('left').innerHTML = window.left;
       document.getElementById('right').innerHTML = window.right;
 
       reset();
@@ -120,6 +129,7 @@
     }
 
     function incorrect() {
+      window.incorrectAnswer = true;
       document.getElementById('correct').style.display = 'none';
       document.getElementById('incorrect').style.display = 'block';
     }
@@ -136,6 +146,8 @@
     }
 
     function reset() {
+      window.incorrectAnswer = false;
+
       document.getElementById('new-problem').style.display = 'none';
 
       document.getElementById('less-than').style.display = 'block';
