@@ -26,9 +26,17 @@
 </head>
 <body>
   <script>
+    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
     async function loadData() {
       let data = await fetch('https://raw.githubusercontent.com/vega/vega/master/docs/data/us-state-capitals.json').then(response => response.json());
       data = data.map(({ state, city }) => ({ state, city }));
+
+      const states = data.map(({ state }) => state);
+      initSpeechDetection(states);
+
       for (let i = data.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * i);
         const temp = data[i];
@@ -38,6 +46,28 @@
       window.data = data;
 
       showNext();
+    }
+
+    function initSpeechDetection(states) {
+      const grammar = `#JSGF V1.0; grammar states; public <state> = ${states.join(' | ')};`;
+
+      const speechRecognitionList = new SpeechGrammarList();
+      speechRecognitionList.addFromString(grammar, 1);
+
+      const recognition = new SpeechRecognition();
+      recognition.grammars = speechRecognitionList;
+      recognition.continuous = true;
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      recognition.onresult = ({ results }) => {
+        const transcript = results[results.length - 1][0].transcript.trim();
+        if (transcript === (window.current && window.current.state)) {
+          showNext();
+          showNext();
+        }
+      };
+      window.recognition = recognition;
     }
 
     function showNext() {
@@ -63,7 +93,9 @@
       showNext();
     });
 
-    loadData()
+    loadData().then(() => {
+      window.recognition.start();
+    })
   </script>
 
   <div id="city">
