@@ -1,8 +1,69 @@
 <html>
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+  <style>
+    html, body {
+      margin: 0;
+      font-family: 'Muli', sans-serif;
+    }
+
+    #options {
+      display: flex;
+
+    }
+
+    #options a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .option {
+      border: solid 2px black;
+      border-radius: 1em;
+      width: 18em;
+      height: 6em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 1em;
+      background-color: lightgray;
+    }
+
+    .option-title {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .option-subtitle {
+      font-size: 0.75em;
+    }
+  </style>
 </head>
 <body>
-  <a href="skip_counting.html">Skip Counting</a>
-  <a href="greater_than_less_than.html">Greater Than / Less Than</a>
+  <div id="options">
+    <a href="skip_counting.html">
+      <div id="skip-counting" class="option">
+        <div class="option-title">
+          Skip Counting
+        </div>
+        <div class="option-subtitle">
+          1, 2, ... 99, 100
+        </div>
+      </div>
+    </a>
+
+    <a href="greater_than_less_than.html">
+      <div id="greater-than-less-than" class="option">
+        <div class="option-title">
+          Greater Than / Less Than
+        </div>
+        <div class="option-subtitle">
+          > <
+        </div>
+      </div>
+    </a>
+  </div>
+
 </body>
 </html>
