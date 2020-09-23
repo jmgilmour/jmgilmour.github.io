@@ -1,8 +1,10 @@
 <html>
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
   <style>
     html, body {
       margin: 0;
+      font-family: 'Muli', sans-serif;
     }
 
     #content, #correct-incorrect, #buttons {
@@ -98,7 +100,6 @@
 <body>
   <script>
     window.correctCount = 0;
-    window.incorrectCount = 0;
 
     function newProblem() {
       window.left = Math.floor(Math.random() * 101);
@@ -119,13 +120,12 @@
     }
 
     function incorrect() {
-      window.incorrectCount = (window.incorrectCount || 0) + 1;
       document.getElementById('correct').style.display = 'none';
       document.getElementById('incorrect').style.display = 'block';
     }
 
     function updateScore() {
-      document.getElementById('score').innerText = `${window.correctCount} / ${window.correctCount + window.incorrectCount}`;
+      document.getElementById('score').innerText = window.correctCount;
     }
 
     function hideAnswerButtons() {
