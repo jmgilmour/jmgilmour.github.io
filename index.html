@@ -132,37 +132,30 @@
     }
 
     function increment() {
-      if (window.number + window.countBy <= 100) {
-        window.number += window.countBy;
-      }
+      if (window.number + window.countBy > 100) return;
+      window.number += window.countBy;
       updateNumber();
     }
 
     function decrement() {
-      if (window.number - window.countBy > 0) {
-        window.number -= window.countBy;
-      }
+      if (window.number - window.countBy <= 0) return;
+      window.number -= window.countBy;
       updateNumber();
     }
 
     window.addEventListener('click', ({ screenX }) => {
-      if (screenX < (window.innerWidth / 2)) {
-        decrement();
-      } else {
-        increment();
-      }
+      increment();
     });
 
     window.addEventListener('keydown', ({ keyCode }) => {
-      if (keyCode === 37 || keyCode === 40) {
-        decrement();
-      } else if (keyCode === 38 || keyCode === 39) {
-        increment();
-      }
+      if (keyCode !== 32) return;
+      increment();
       updateNumber();
     });
 
-    function setCountBy(value) {
+    function setCountBy(event, value) {
+      event.stopPropagation();
+
       window.number = value;
       window.countBy = window.number;
       updateNumber();
@@ -182,16 +175,16 @@
   </div>
 
   <div id="options">
-    <div class="option" onclick="setCountBy(1)">1</div>
-    <div class="option" onclick="setCountBy(2)">2</div>
-    <div class="option" onclick="setCountBy(3)">3</div>
-    <div class="option" onclick="setCountBy(4)">4</div>
-    <div class="option" onclick="setCountBy(5)">5</div>
-    <div class="option" onclick="setCountBy(6)">6</div>
-    <div class="option" onclick="setCountBy(7)">7</div>
-    <div class="option" onclick="setCountBy(8)">8</div>
-    <div class="option" onclick="setCountBy(9)">9</div>
-    <div class="option" onclick="setCountBy(10)">10</div>
+    <div class="option" onclick="setCountBy(event, 1)">1</div>
+    <div class="option" onclick="setCountBy(event, 2)">2</div>
+    <div class="option" onclick="setCountBy(event, 3)">3</div>
+    <div class="option" onclick="setCountBy(event, 4)">4</div>
+    <div class="option" onclick="setCountBy(event, 5)">5</div>
+    <div class="option" onclick="setCountBy(event, 6)">6</div>
+    <div class="option" onclick="setCountBy(event, 7)">7</div>
+    <div class="option" onclick="setCountBy(event, 8)">8</div>
+    <div class="option" onclick="setCountBy(event, 9)">9</div>
+    <div class="option" onclick="setCountBy(event, 10)">10</div>
   </div>
 
   <div id="hint">
