@@ -10,6 +10,8 @@
     #options {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
 
     #options a {
@@ -20,23 +22,35 @@
     .option {
       border: solid 2px black;
       border-radius: 1em;
-      width: 18em;
+      width: 20em;
       height: 6em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       margin: 1em;
       background-color: lightgray;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .option-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .option-icon img {
+      height: 3em;
+      width: 3em;
+      padding: 1em;
     }
 
     .option-title {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.5em;
       margin-bottom: 0.5em;
-    }
-
-    .option-subtitle {
-      font-size: 0.75em;
     }
   </style>
 </head>
@@ -44,65 +58,66 @@
   <div id="options">
     <a href="skip-counting.html">
       <div class="option">
+        <div class="option-icon">
+          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/hashtag.svg">
+        </div>
         <div class="option-title">
           Skip Counting
-        </div>
-        <div class="option-subtitle">
-          1, 2, ... 99, 100
         </div>
       </div>
     </a>
 
     <a href="greater-than-less-than.html">
       <div class="option">
-        <div class="option-title">
-          Greater Than / Less Than
+        <div class="option-icon">
+          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/less-than.svg">
         </div>
-        <div class="option-subtitle">
-          > <
+        <div class="option-title">
+          Greater Than<br>Less Than
         </div>
       </div>
     </a>
 
     <a href="state-capitals.html">
-      <div id="" class="option">
+      <div class="option">
+        <div class="option-icon">
+          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/star.svg">
+        </div>
         <div class="option-title">
           State Capitals
-        </div>
-        <div class="option-subtitle">
         </div>
       </div>
     </a>
 
     <a href="addition-flash-cards.html">
-      <div id="" class="option">
-        <div class="option-title">
-          Addition Flash Cards
+      <div class="option">
+        <div class="option-icon">
+          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/plus.svg">
         </div>
-        <div class="option-subtitle">
-          1 + 1 =
+        <div class="option-title">
+          Addition<br>Flash Cards
         </div>
       </div>
     </a>
 
     <a href="subtraction-flash-cards.html">
-      <div id="" class="option">
-        <div class="option-title">
-          Subtraction Flash Cards
+      <div class="option">
+        <div class="option-icon">
+          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/minus.svg">
         </div>
-        <div class="option-subtitle">
-          1 - 1 =
+        <div class="option-title">
+          Subtraction<br>Flash Cards
         </div>
       </div>
     </a>
 
     <a href="multiplication-flash-cards.html">
-      <div id="" class="option">
-        <div class="option-title">
-          Multiplication Flash Cards
+      <div class="option">
+        <div class="option-icon">
+          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/times.svg">
         </div>
-        <div class="option-subtitle">
-          1 x 1 =
+        <div class="option-title">
+          Multiplication<br>Flash Cards
         </div>
       </div>
     </a>
