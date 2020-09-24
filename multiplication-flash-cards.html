@@ -97,7 +97,7 @@
     function newCard() {
       window.first = Math.floor(Math.random() * 10);
       window.second = Math.floor(Math.random() * 10);
-      window.sum = first + second;
+      window.product = first * second;
 
       document.querySelector('#card-front .top').innerText = window.first;
       document.querySelector('#card-front .middle .number').innerText = window.second;
@@ -106,7 +106,7 @@
     function flipCard() {
       document.querySelector('#card-back .top').innerText = window.first;
       document.querySelector('#card-back .middle .number').innerText = window.second;
-      document.querySelector('#card-back .bottom').innerText = window.sum;
+      document.querySelector('#card-back .bottom').innerText = window.product;
 
       document.getElementById('flip-card').classList.toggle('flipped');
 
@@ -136,7 +136,7 @@
           <div class="top"></div>
           <div class="middle">
             <div class="plus">
-              <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/plus.svg">
+              <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/times.svg">
             </div>
             <div class="number"></div>
           </div>
@@ -147,7 +147,7 @@
           <div class="top"></div>
           <div class="middle">
             <div class="plus">
-              <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/plus.svg">
+              <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/times.svg">
             </div>
             <div class="number"></div>
           </div>
