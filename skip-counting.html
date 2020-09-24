@@ -20,36 +20,61 @@
       font-size: 30vw;
     }
 
+    @media (orientation: landscape) {
+      #options {
+        top: 0;
+        width: 60px;
+        flex-direction: column;
+        border-left: solid 2px black;
+        border-right: solid 2px black;
+      }
+
+      #options .option {
+        width: 100%;
+        height: 10%;
+        border-top: solid 2px black;
+        border-bottom: solid 2px black;
+      }
+    }
+
+    @media (orientation: portrait) {
+      #options {
+        right: 0;
+        flex-wrap: wrap;
+        border-left: solid 2px black;
+        border-right: solid 2px black;
+      }
+
+      #options .option {
+        width: 20%;
+        height: 100%;
+        margin-left: -2px;
+        border: solid 2px black;
+        margin-right: -2px;
+      }
+    }
+
     #options {
       position: absolute;
-      top: 0;
       left: 0;
       bottom: 0;
-      width: 60px;
       display: flex;
-      flex-direction: column;
       font-size: 2em;
-      border-left: solid 2px black;
-      border-right: solid 2px black;
     }
 
     #options .option {
-      width: 100%;
-      height: 10%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border-top: solid 2px black;
-      border-bottom: solid 2px black;
     }
 
-    #options .option.selected {
+    /* #options .option.selected {
       padding-right: 1em;
       border-right: solid 2px black;
-    }
+    } */
 
-    #options .option:nth-child(1) {
+    /* #options .option:nth-child(1) {
       background-color: rgb(244, 67, 54);
     }
 
@@ -87,9 +112,9 @@
 
     #options .option:nth-child(10) {
       background-color: rgb(76, 175, 80);
-    }
+    } */
 
-    #hint {
+    /* #hint {
       position: absolute;
       right: 2em;
       top: 1em;
@@ -150,7 +175,7 @@
     #hint-icon img, #view-all img, #listen img {
       height: 2.5em;
       width: 2.5em;
-    }
+    } */
   </style>
 </head>
 <body>
@@ -160,7 +185,7 @@
 
     function updateNumber() {
       document.getElementById('number').innerHTML = window.number;
-      document.getElementById('hint-number').style.visibility = 'hidden';
+      // document.getElementById('hint-number').style.visibility = 'hidden';
     }
 
     function increment() {
@@ -203,26 +228,26 @@
       });
     }
 
-    function showHint(event) {
-      event.stopPropagation();
-
-      const hintNumber = document.getElementById('hint-number');
-      hintNumber.style.visibility = 'visible';
-      hintNumber.innerHTML = window.number + window.countBy;
-    }
-
-    function viewAll(event) {
-      event.stopPropagation();
-    }
-
-    function listen(event) {
-      event.stopPropagation();
-
-      const synth = window.speechSynthesis;
-      var msg = new SpeechSynthesisUtterance(window.number);
-      msg.voice = synth.getVoices()[3];
-      synth.speak(msg);
-    }
+    // function showHint(event) {
+    //   event.stopPropagation();
+    //
+    //   const hintNumber = document.getElementById('hint-number');
+    //   hintNumber.style.visibility = 'visible';
+    //   hintNumber.innerHTML = window.number + window.countBy;
+    // }
+    //
+    // function viewAll(event) {
+    //   event.stopPropagation();
+    // }
+    //
+    // function listen(event) {
+    //   event.stopPropagation();
+    //
+    //   const synth = window.speechSynthesis;
+    //   var msg = new SpeechSynthesisUtterance(window.number);
+    //   msg.voice = synth.getVoices()[3];
+    //   synth.speak(msg);
+    // }
 
     // make sure voices are loaded
     setTimeout(window.speechSynthesis.getVoices(), 50);
@@ -250,7 +275,7 @@
     <div class="option" onclick="setCountBy(event, 10)">10</div>
   </div>
 
-  <div id="hint">
+  <!-- <div id="hint">
     <div id="hint-number">
       1
     </div>
@@ -265,7 +290,7 @@
 
   <div id="listen" onclick="listen(event)">
     <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/volume-up.svg">
-  </div>
+  </div> -->
 
 </body>
 </html>
