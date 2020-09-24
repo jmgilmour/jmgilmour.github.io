@@ -1,0 +1,178 @@
+<html>
+<head>
+  <link rel="stylesheet" href="global-style.css">
+  <style>
+    html, body {
+      user-select: none;
+    }
+
+    #content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: lightgray;
+    }
+
+    /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+    #flip-card {
+      width: 20em;
+      height: 30em;
+      perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    }
+
+    /* This container is needed to position the front and back side */
+    #flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    #flip-card.flipped #flip-card-inner {
+      transform: rotateY(-180deg);
+    }
+
+    /* Position the front and back side */
+    #card-front, #card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+      border: solid thin black;
+      border-radius: 0.5em;
+      background-color: white;
+
+      font-size: 7em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #card-front > *, #card-back > * {
+      width: 80%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    #card-front .middle, #card-back .middle {
+      display: flex;
+      border-bottom: solid 0.05em black;
+    }
+
+    #card-front .middle .plus, #card-back .middle .plus {
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      margin-bottom: 0.5em;
+    }
+
+    #card-front .middle .plus img, #card-back .middle .plus img {
+      width: 0.5em;
+      height: 0.5em;
+    }
+
+    #card-front .bottom, #card-back .bottom {
+      border-top: solid 0.05em black;
+    }
+
+    /* Style the back side */
+    #card-back {
+      transform: rotateY(-180deg);
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.random = weightedRand({0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:6, 7:6, 8:6, 9:6});
+
+    function weightedRand(spec) {
+      var i, j, table=[];
+      for (i in spec) {
+        // The constant 10 below should be computed based on the
+        // weights in the spec for a correct and optimal table size.
+        // E.g. the spec {0:0.999, 1:0.001} will break this impl.
+        for (j=0; j<spec[i]*10; j++) {
+          table.push(i);
+        }
+      }
+      return function() {
+        return table[Math.floor(Math.random() * table.length)];
+      }
+    }
+
+    function newCard() {
+      window.last = window.second || -1;
+
+      window.first = window.random();
+      do {
+        window.second = Math.floor(Math.random() * 10);
+      } while (window.second > window.first || window.second === window.last)
+      window.difference = first - second;
+
+      document.querySelector('#card-front .top').innerText = window.first;
+      document.querySelector('#card-front .middle .number').innerText = window.second;
+    }
+
+    function flipCard() {
+      document.querySelector('#card-back .top').innerText = window.first;
+      document.querySelector('#card-back .middle .number').innerText = window.second;
+      document.querySelector('#card-back .bottom').innerText = window.difference;
+
+      document.getElementById('flip-card').classList.toggle('flipped');
+
+      if (!document.getElementById('flip-card').classList.contains('flipped')) {
+        newCard();
+      }
+    }
+
+    window.addEventListener('click', ({ screenX }) => {
+      flipCard();
+    });
+
+    window.addEventListener('keydown', ({ keyCode }) => {
+      if (keyCode !== 32) return;
+      flipCard();
+    });
+
+    window.addEventListener('load', () => {
+      newCard();
+    });
+  </script>
+
+  <div id="content">
+    <div id="flip-card">
+      <div id="flip-card-inner">
+        <div id="card-front">
+          <div class="top"></div>
+          <div class="middle">
+            <div class="plus">
+              <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/minus.svg">
+            </div>
+            <div class="number"></div>
+          </div>
+          <div class="bottom">&nbsp;</div>
+        </div>
+
+        <div id="card-back">
+          <div class="top"></div>
+          <div class="middle">
+            <div class="plus">
+              <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/minus.svg">
+            </div>
+            <div class="number"></div>
+          </div>
+          <div class="bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
