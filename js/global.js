@@ -8,4 +8,4 @@ function addToHead(tag, definition) {
 
 addToHead('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1'});
 addToHead('link', { rel: 'icon', type: 'image/png', href: 'images/favicon/favicon-32x32.png'});
-addToHead('link', { rel: 'stylesheet', href: 'global-style.css'});
+addToHead('link', { rel: 'stylesheet', href: 'css/global-style.css'});
