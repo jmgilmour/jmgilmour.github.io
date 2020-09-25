@@ -1,100 +1,84 @@
 <html>
 <head>
-  <!--
-    TODO better spacing for mobile
-    TODO microphone interaction
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="favicon/favicon-32x32.png">
   <link rel="stylesheet" href="global-style.css">
   <style>
-    #content, #correct-incorrect, #buttons {
-      font-size: 10em;
+    body {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #top, #middle, #bottom {
+      display: flex;
       justify-content: center;
-      margin-bottom: 0.5em;
-
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 25%;
     }
 
-    #content {
-      top: 0;
-    }
-
-    #correct-incorrect {
-      top: 33%;
-      font-size: 1em;
-    }
-
-    #correct, #incorrect {
-      width: 7%;
-      display: none;
-    }
-
-    #correct {
-      filter: invert(1) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg) saturate(1000%) contrast(0.8);
-    }
-
-    #incorrect {
-      filter: invert(1) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
-    }
-
-    #buttons {
-      bottom: 0;
-    }
-
-    #left, #middle, #right {
-      height: 100%;
-    }
-
-    #left, #right {
-      width: 25%;
-    }
-
-    #left {
-      display: flex;
-      justify-content: flex-end;
+    #top {
+      height: 33%;
+      align-items: flex-end;
     }
 
     #middle {
-      border-bottom: solid 0.05em black;
-      margin: 0.25em;
-      width: 10%;
+      flex: 1;
+      align-items: center;
+    }
+
+    #bottom {
+      height: 33%;
+      align-items: flex-start;
+    }
+
+    #left-number, #right-number {
+      font-size: 8em;
+    }
+
+    #left-number {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 3vw;
+    }
+
+    #right-number {
+      padding-left: 3vw;
+    }
+
+    #answer {
+      border-bottom: solid 0.5vw black;
+      min-width: 150px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
 
-    #middle img {
-      margin-bottom: 0.1em;
-    }
-
     #less-than, #new-problem, #greater-than {
-      margin: 0.25em;
-      background-color: #e7e7e7;
+      background-color: darkgray;
       border: none;
       cursor: pointer;
-      padding: 0.1em;
-
+      border-radius: 2vw;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    #middle img, #less-than img, #new-problem img, #greater-than img {
-      width: 0.5em;
-      height: 0.5em;
+    #less-than {
+      margin-right: 0.5vw;
+    }
+
+    #greater-than {
+      margin-right: 0.5vw;
     }
 
     #score {
       position: absolute;
-      top: 0;
-      right: 0.5em;
-      font-size: 5em;
+      bottom: 0;
+      right: 1vh;
+      font-size: 8vh;
+    }
+
+    #correct, #incorrect {
+      display: none;
     }
   </style>
 </head>
@@ -111,8 +95,8 @@
         } while(window.right === window.left);
       }
 
-      document.getElementById('left').innerHTML = window.left;
-      document.getElementById('right').innerHTML = window.right;
+      document.getElementById('left-number').innerHTML = window.left;
+      document.getElementById('right-number').innerHTML = window.right;
 
       reset();
     }
@@ -151,12 +135,16 @@
 
       document.getElementById('correct').style.display = 'none';
       document.getElementById('incorrect').style.display = 'none';
-      document.getElementById('middle').innerHTML = '';
+
+
+      document.getElementById('answer').classList.remove('solid-less-than');
+      document.getElementById('answer').classList.remove('solid-greater-than');
     }
 
     function selectLessThan() {
       hideAnswerButtons();
-      document.getElementById('middle').innerHTML = `<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/less-than.svg">`;
+      document.getElementById('answer').classList.remove('solid-greater-than');
+      document.getElementById('answer').classList.add('solid-less-than');
       if (window.left < window.right) {
         correct();
       } else {
@@ -167,7 +155,8 @@
 
     function selectGreaterThan() {
       hideAnswerButtons();
-      document.getElementById('middle').innerHTML = `<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/greater-than.svg">`;
+      document.getElementById('answer').classList.remove('solid-less-than');
+      document.getElementById('answer').classList.add('solid-greater-than');
       if (window.left > window.right) {
         correct();
       } else {
@@ -182,31 +171,21 @@
     });
   </script>
 
-  <div id="content">
-    <div id="left"></div>
-    <div id="middle"></div>
-    <div id="right"></div>
+  <div id="top">
+    <div id="left-number"></div>
+    <div id="answer"></div>
+    <div id="right-number"></div>
   </div>
 
-  <div id="correct-incorrect">
-    <div id="correct">
-      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/check.svg">
-    </div>
-    <div id="incorrect">
-      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/times.svg">
-    </div>
+  <div id="middle">
+    <div id="correct" class="solid-check icon-green"></div>
+    <div id="incorrect" class="solid-times icon-red"></div>
   </div>
 
-  <div id="buttons">
-    <div id="less-than" onclick="selectLessThan()">
-      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/less-than.svg">
-    </div>
-    <div id="new-problem" onclick="newProblem()">
-      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/sync-alt.svg">
-    </div>
-    <div id="greater-than" onclick="selectGreaterThan()">
-      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/greater-than.svg">
-    </div>
+  <div id="bottom">
+    <div id="less-than" class="solid-less-than" onclick="selectLessThan()"></div>
+    <div id="new-problem" class="solid-sync-alt" onclick="newProblem()"></div>
+    <div id="greater-than" class="solid-greater-than" onclick="selectGreaterThan()"></div>
   </div>
 
   <div id="score">0</div>
