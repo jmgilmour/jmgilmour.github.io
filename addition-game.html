@@ -62,11 +62,15 @@
       window.number2 = Math.floor(Math.random() * 11);
       window.answer = number1 + number2;
 
-      window.options = shuffle([
-        window.number1 + window.number2 - 1,
-        window.answer,
-        window.number1 + window.number2 + 1,
-      ]);
+      const options = (window.number1 === 0 && window.number2 === 0)
+        ? [0, 1, 2]
+        : [
+          window.number1 + window.number2 - 1,
+          window.answer,
+          window.number1 + window.number2 + 1,
+        ];
+
+      window.options = shuffle(options);
 
       document.getElementById('number-1').innerText = window.number1;
       document.getElementById('number-2').innerText = window.number2;
