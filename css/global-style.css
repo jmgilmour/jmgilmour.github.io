@@ -32,15 +32,36 @@ html, body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.solid-sync-alt.icon-9 {
-  background-size: 8em 8em;
-}
-.solid-sync-alt.icon-7 {
-  background-size: 6em 6em;
-}
+.solid-sync-alt.icon-9 { background-size: 8em 8em; }
+.solid-sync-alt.icon-7 { background-size: 6em 6em; }
+.solid-sync-alt.icon-3 { background-size: 2em 2em; }
 
 .solid-greater-than {
   background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/greater-than.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.solid-star {
+  background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/star.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.solid-hashtag {
+  background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/hashtag.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.solid-plus {
+  background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/plus.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.solid-minus {
+  background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/minus.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -56,6 +77,12 @@ html, body {
   background-size: 7em 7em;
   width: 7em;
   height: 7em;
+}
+
+.icon-3 {
+  background-size: 3em 3em;
+  width: 3em;
+  height: 3em;
 }
 
 /* icon colors */

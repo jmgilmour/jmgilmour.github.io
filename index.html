@@ -38,9 +38,7 @@
       justify-content: center;
     }
 
-    .option-icon img {
-      height: 3em;
-      width: 3em;
+    .option-icon > div {
       padding: 1em;
     }
 
@@ -55,72 +53,44 @@
   </style>
 </head>
 <body>
-  <div id="options">
-    <a href="skip-counting.html">
-      <div class="option">
-        <div class="option-icon">
-          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/hashtag.svg">
-        </div>
-        <div class="option-title">
-          Skip Counting
-        </div>
-      </div>
-    </a>
+  <script>
+    const apps = [
+      { name: 'Skip Counting', link: 'skip-counting.html', icon: 'solid-hashtag' },
+      { name: 'Greater Than<br>Less Than', link: 'greater-than-less-than.html', icon: 'solid-less-than' },
+      { name: 'State Capitals', link: 'state-capitals.html', icon: 'solid-star' },
+      { name: 'Addition<br>Flash Cards', link: 'addition-flash-cards.html', icon: 'solid-plus' },
+      { name: 'Subtraction<br>Flash Cards', link: 'subtraction-flash-cards.html', icon: 'solid-minus' },
+      { name: 'Multiplication<br>Flash Cards', link: 'multiplication-flash-cards.html', icon: 'solid-times' },
+    ];
 
-    <a href="greater-than-less-than.html">
-      <div class="option">
-        <div class="option-icon">
-          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/less-than.svg">
-        </div>
-        <div class="option-title">
-          Greater Than<br>Less Than
-        </div>
-      </div>
-    </a>
+    window.addEventListener('load', () => {
+      const options = document.getElementById('options');
 
-    <a href="state-capitals.html">
-      <div class="option">
-        <div class="option-icon">
-          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/star.svg">
-        </div>
-        <div class="option-title">
-          State Capitals
-        </div>
-      </div>
-    </a>
+      apps.forEach(({ name, link, icon}) => {
+        const iconHolder = document.createElement('div');
+        iconHolder.classList.add(icon, 'icon-3');
 
-    <a href="addition-flash-cards.html">
-      <div class="option">
-        <div class="option-icon">
-          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/plus.svg">
-        </div>
-        <div class="option-title">
-          Addition<br>Flash Cards
-        </div>
-      </div>
-    </a>
+        const optionIcon = document.createElement('div');
+        optionIcon.classList.add('option-icon');
+        optionIcon.appendChild(iconHolder);
 
-    <a href="subtraction-flash-cards.html">
-      <div class="option">
-        <div class="option-icon">
-          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/minus.svg">
-        </div>
-        <div class="option-title">
-          Subtraction<br>Flash Cards
-        </div>
-      </div>
-    </a>
+        const optionTitle = document.createElement('div');
+        optionTitle.classList.add('option-title');
+        optionTitle.innerHTML = name;
 
-    <a href="multiplication-flash-cards.html">
-      <div class="option">
-        <div class="option-icon">
-          <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/times.svg">
-        </div>
-        <div class="option-title">
-          Multiplication<br>Flash Cards
-        </div>
-      </div>
-    </a>
-  </div>
+        const option = document.createElement('div');
+        option.classList.add('option');
+        option.appendChild(optionIcon);
+        option.appendChild(optionTitle);
+
+        const a = document.createElement('a');
+        a.href = link;
+        a.appendChild(option);
+
+        options.appendChild(a);
+      });
+    });
+  </script>
+  <div id="options"></div>
 </body>
 </html>
