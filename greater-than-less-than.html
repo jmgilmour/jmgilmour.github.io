@@ -82,7 +82,7 @@
   <script>
     window.uuid = 'ec646932-ff31-11ea-adc1-0242ac120002';
 
-    window.score = parseInt(localStorage.getItem(`${uuid}:score`)) || 0;
+    window.score = parseInt(localStorage.getItem(`${uuid}::score`)) || 0;
     window.incorrectAnswer = false;
 
     function newProblem() {
