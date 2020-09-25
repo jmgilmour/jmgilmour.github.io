@@ -1,4 +1,31 @@
+function addFlashcardLayout() {
+  const content = document.createElement('div');
+  content.id = 'content';
+  content.innerHTML = `
+    <div id="flip-card">
+      <div id="flip-card-inner">
+        <div id="card-front">
+          <div class="top"></div>
+          <div class="middle">
+            <div class="operator ${operatorIcon()}"></div>
+            <div class="number"></div>
+          </div>
+          <div class="bottom">&nbsp;</div>
+        </div>
 
+        <div id="card-back">
+          <div class="top"></div>
+          <div class="middle">
+            <div class="operator ${operatorIcon()}"></div>
+            <div class="number"></div>
+          </div>
+          <div class="bottom"></div>
+        </div>
+      </div>
+    `;
+
+  document.body.appendChild(content);
+}
 
 function newCard() {
   newValues();
@@ -28,5 +55,6 @@ window.addEventListener('keydown', ({ keyCode }) => {
 });
 
 window.addEventListener('load', () => {
+  addFlashcardLayout();
   newCard();
 });

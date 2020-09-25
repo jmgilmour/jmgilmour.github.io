@@ -6,35 +6,13 @@
 </head>
 <body>
   <script>
+    function operatorIcon() { return 'solid-plus'; }
+
     function newValues() {
       window.first = Math.floor(Math.random() * 10);
       window.second = Math.floor(Math.random() * 10);
       window.result = first + second;
     }
   </script>
-
-  <div id="content">
-    <div id="flip-card">
-      <div id="flip-card-inner">
-        <div id="card-front">
-          <div class="top"></div>
-          <div class="middle">
-            <div class="operator solid-plus"></div>
-            <div class="number"></div>
-          </div>
-          <div class="bottom">&nbsp;</div>
-        </div>
-
-        <div id="card-back">
-          <div class="top"></div>
-          <div class="middle">
-            <div class="operator solid-plus"></div>
-            <div class="number"></div>
-          </div>
-          <div class="bottom"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>

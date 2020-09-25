@@ -9,6 +9,9 @@
   <script>
     window.random = weightedRand({0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:6, 7:6, 8:6, 9:6});
 
+
+    function operatorIcon() { return 'solid-minus'; }
+
     function newValues() {
       window.last = window.second || -1;
 
@@ -19,29 +22,5 @@
       window.result = window.first - window.second;
     }
   </script>
-
-  <div id="content">
-    <div id="flip-card">
-      <div id="flip-card-inner">
-        <div id="card-front">
-          <div class="top"></div>
-          <div class="middle">
-            <div class="operator solid-minus"></div>
-            <div class="number"></div>
-          </div>
-          <div class="bottom">&nbsp;</div>
-        </div>
-
-        <div id="card-back">
-          <div class="top"></div>
-          <div class="middle">
-            <div class="operator solid-minus"></div>
-            <div class="number"></div>
-          </div>
-          <div class="bottom"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
