@@ -5,7 +5,7 @@ function addEquationGameLayout() {
   top.id = 'top';
   top.innerHTML = `
     <div id="number-1"></div>
-    <div id="operator" class="${operatorIcon()} icon-4"></div>
+    <div id="operator" class="${operatorIcon} icon-4"></div>
     <div id="number-2"></div>
     <div id="equals" class="solid-equals icon-4"></div>
     <div id="blank"></div>
@@ -59,7 +59,7 @@ function submitAnswer(answer) {
     document.getElementById('correct').style.visibility = 'visible';
 
     window.score += 1;
-    localStorage.setItem('score', window.score);
+    localStorage.setItem(`${window.uuid}::score`, window.score);
     updateScore();
   } else {
     document.getElementById('correct').style.display = 'none';
@@ -83,7 +83,7 @@ function submitAnswer(answer) {
 }
 
 window.addEventListener('load', () => {
-  window.score = parseInt(localStorage.getItem(`${uuid}::score`)) || 0;
+  window.score = parseInt(localStorage.getItem(`${window.uuid}::score`)) || 0;
 
   addEquationGameLayout();
   updateScore();

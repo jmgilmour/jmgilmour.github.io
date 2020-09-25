@@ -2,30 +2,12 @@
 <head>
   <script src="js/global.js"></script>
   <script src="js/utils/array-shuffle.js"></script>
+  <script src="js/multiplication-values.js"></script>
   <script src="js/equation-game.js"></script>
 </head>
 <body class="no-select">
   <script>
-    const uuid = 'dc9adaf4-ff31-11ea-adc1-0242ac120002';
-
-    function operatorIcon() { return 'solid-times'; }
-
-    function newValues() {
-      window.number1 = Math.floor(Math.random() * 11);
-      window.number2 = Math.floor(Math.random() * 11);
-      window.answer = number1 * number2;
-
-      const options = (window.answer === 0)
-        ? [0, 1, 2]
-        : [
-            (window.number1 * window.number2) - 1,
-            window.answer,
-            (window.number1 * window.number2) + 1,
-          ];
-
-      window.options = shuffle(options);
-    }
+    window.uuid = 'dc9adaf4-ff31-11ea-adc1-0242ac120002';
   </script>
-
 </body>
 </html>

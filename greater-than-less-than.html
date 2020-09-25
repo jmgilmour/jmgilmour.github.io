@@ -80,7 +80,7 @@
 </head>
 <body class="no-select">
   <script>
-    const uuid = 'ec646932-ff31-11ea-adc1-0242ac120002';
+    window.uuid = 'ec646932-ff31-11ea-adc1-0242ac120002';
 
     window.score = parseInt(localStorage.getItem(`${uuid}:score`)) || 0;
     window.incorrectAnswer = false;
@@ -101,7 +101,7 @@
 
     function correct() {
       window.score += 1;
-      localStorage.setItem('score', window.score);
+      localStorage.setItem(`${window.uuid}::score`, window.score);
       document.getElementById('correct').style.display = 'block';
       document.getElementById('incorrect').style.display = 'none';
     }

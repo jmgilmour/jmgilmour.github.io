@@ -1,24 +1,11 @@
 <html>
 <head>
   <script src="js/global.js"></script>
+  <script src="js/utils/array-shuffle.js"></script>
   <script src="js/utils/weighted-rand.js"></script>
+  <script src="js/subtraction-values.js"></script>
   <script src="js/flash-cards.js"></script>
 </head>
 <body>
-  <script>
-    window.random = weightedRand({0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:6, 7:6, 8:6, 9:6});
-
-    function operatorIcon() { return 'solid-minus'; }
-
-    function newValues() {
-      window.last = window.second || -1;
-
-      window.first = window.random();
-      do {
-        window.second = Math.floor(Math.random() * 11);
-      } while (window.second > window.first || window.second === window.last);
-      window.result = window.first - window.second;
-    }
-  </script>
 </body>
 </html>
