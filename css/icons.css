@@ -56,6 +56,12 @@
   background-position: center;
 }
 
+.solid-arrow-left {
+  background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/arrow-left.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* icon sizes */
 .icon-9 {
   background-size: 9em 9em;

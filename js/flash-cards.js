@@ -45,7 +45,7 @@ function flipCard() {
   }
 }
 
-window.addEventListener('click', ({ screenX }) => {
+window.addEventListener('click', () => {
   flipCard();
 });
 
