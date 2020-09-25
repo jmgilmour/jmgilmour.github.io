@@ -56,30 +56,36 @@ html, body {
   align-items: center;
 }
 
+#card-front .middle, #card-back .middle {
+  display: flex;
+  border-bottom: solid 0.05em black;
+}
 
-  #card-front .middle, #card-back .middle {
-    display: flex;
-    border-bottom: solid 0.05em black;
-  }
+#card-front .middle .operator, #card-back .middle .operator {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  margin-bottom: 0.5em;
+}
 
-  #card-front .middle .operator, #card-back .middle .operator {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
-    margin-bottom: 0.5em;
-  }
+#card-front .middle .operator img, #card-back .middle .operator img {
+  width: 0.5em;
+  height: 0.5em;
+}
 
-  #card-front .middle .operator img, #card-back .middle .operator img {
-    width: 0.5em;
-    height: 0.5em;
-  }
+#card-front .bottom, #card-back .bottom {
+  border-top: solid 0.05em black;
+}
 
-  #card-front .bottom, #card-back .bottom {
-    border-top: solid 0.05em black;
-  }
+/* Style the back side */
+#card-back {
+  transform: rotateY(-180deg);
+}
 
-  /* Style the back side */
-  #card-back {
-    transform: rotateY(-180deg);
-  }
+.operator {
+  background-position: left bottom;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+}
