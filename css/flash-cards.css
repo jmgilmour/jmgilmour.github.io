@@ -1,0 +1,85 @@
+html, body {
+  user-select: none;
+}
+
+#content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+#flip-card {
+  width: 20em;
+  height: 30em;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+#flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+#flip-card.flipped #flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+/* Position the front and back side */
+#card-front, #card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border: solid 0.25vw black;
+  border-radius: 0.5em;
+  background-color: white;
+
+  font-size: 7em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#card-front > *, #card-back > * {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+  #card-front .middle, #card-back .middle {
+    display: flex;
+    border-bottom: solid 0.05em black;
+  }
+
+  #card-front .middle .operator, #card-back .middle .operator {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  #card-front .middle .operator img, #card-back .middle .operator img {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  #card-front .bottom, #card-back .bottom {
+    border-top: solid 0.05em black;
+  }
+
+  /* Style the back side */
+  #card-back {
+    transform: rotateY(-180deg);
+  }
