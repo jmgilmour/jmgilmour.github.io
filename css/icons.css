@@ -24,6 +24,9 @@
 }
 .solid-sync-alt.icon-9 { background-size: 8em 8em; }
 .solid-sync-alt.icon-7 { background-size: 6em 6em; }
+.solid-sync-alt.icon-6 { background-size: 5em 5em; }
+.solid-sync-alt.icon-5 { background-size: 4em 4em; }
+.solid-sync-alt.icon-4 { background-size: 3em 3em; }
 .solid-sync-alt.icon-3 { background-size: 2em 2em; }
 
 .solid-greater-than {
@@ -62,6 +65,12 @@
   background-position: center;
 }
 
+.solid-equals {
+  background-image: url("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/equals.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* icon sizes */
 .icon-9 {
   background-size: 9em 9em;
@@ -73,6 +82,24 @@
   background-size: 7em 7em;
   width: 7em;
   height: 7em;
+}
+
+.icon-6 {
+  background-size: 6em 6em;
+  width: 6em;
+  height: 6em;
+}
+
+.icon-5 {
+  background-size: 5em 5em;
+  width: 5em;
+  height: 5em;
+}
+
+.icon-4 {
+  background-size: 4em 4em;
+  width: 4em;
+  height: 4em;
 }
 
 .icon-3 {

@@ -8,3 +8,17 @@ html, body {
   height: 100%;
   background-color: #e7e7e7;
 }
+
+body.no-select {
+  user-select: none;
+}
+
+.button {
+  background-color: darkgray;
+  border: none;
+  cursor: pointer;
+  border-radius: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

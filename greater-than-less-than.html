@@ -54,16 +54,6 @@
       justify-content: center;
     }
 
-    #less-than, #new-problem, #greater-than {
-      background-color: darkgray;
-      border: none;
-      cursor: pointer;
-      border-radius: 2vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     #less-than {
       margin-right: 2vw;
     }
@@ -88,9 +78,11 @@
     }
   </style>
 </head>
-<body>
+<body class="no-select">
   <script>
-    window.score = parseInt(localStorage.getItem('score')) || 0;
+    const uuid = 'ec646932-ff31-11ea-adc1-0242ac120002';
+
+    window.score = parseInt(localStorage.getItem(`${uuid}:score`)) || 0;
     window.incorrectAnswer = false;
 
     function newProblem() {
@@ -189,9 +181,9 @@
   </div>
 
   <div id="bottom">
-    <div id="less-than" class="solid-less-than icon-7" onclick="selectLessThan()"></div>
-    <div id="new-problem" class="solid-sync-alt icon-7" onclick="newProblem()"></div>
-    <div id="greater-than" class="solid-greater-than icon-7" onclick="selectGreaterThan()"></div>
+    <div id="less-than" class="button solid-less-than icon-7" onclick="selectLessThan()"></div>
+    <div id="new-problem" class="button solid-sync-alt icon-7" onclick="newProblem()"></div>
+    <div id="greater-than" class="button solid-greater-than icon-7" onclick="selectGreaterThan()"></div>
   </div>
 
   <div id="score">0</div>
