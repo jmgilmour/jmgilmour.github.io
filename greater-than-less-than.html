@@ -63,11 +63,15 @@
     }
 
     #less-than {
-      margin-right: 0.5vw;
+      margin-right: 2vw;
+    }
+
+    #new-problem {
+      display: none;
     }
 
     #greater-than {
-      margin-right: 0.5vw;
+      margin-right: 2vw;
     }
 
     #score {
@@ -173,19 +177,19 @@
 
   <div id="top">
     <div id="left-number"></div>
-    <div id="answer"></div>
+    <div id="answer" class="icon-9"></div>
     <div id="right-number"></div>
   </div>
 
   <div id="middle">
-    <div id="correct" class="solid-check icon-green"></div>
-    <div id="incorrect" class="solid-times icon-red"></div>
+    <div id="correct" class="solid-check icon-9 icon-green"></div>
+    <div id="incorrect" class="solid-times icon-9 icon-red"></div>
   </div>
 
   <div id="bottom">
-    <div id="less-than" class="solid-less-than" onclick="selectLessThan()"></div>
-    <div id="new-problem" class="solid-sync-alt" onclick="newProblem()"></div>
-    <div id="greater-than" class="solid-greater-than" onclick="selectGreaterThan()"></div>
+    <div id="less-than" class="solid-less-than icon-7" onclick="selectLessThan()"></div>
+    <div id="new-problem" class="solid-sync-alt icon-7" onclick="newProblem()"></div>
+    <div id="greater-than" class="solid-greater-than icon-7" onclick="selectGreaterThan()"></div>
   </div>
 
   <div id="score">0</div>
