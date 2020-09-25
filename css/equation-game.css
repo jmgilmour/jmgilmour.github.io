@@ -1,0 +1,46 @@
+#top, #bottom {
+  height: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#operator, #equals {
+  margin: 0 2vw;
+}
+
+#number-1, #number-2, #blank {
+  font-size: 10vw;
+}
+
+#blank {
+  border-bottom: solid 0.5vw black;
+  width: 10vw;
+  height: 10vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#result {
+  margin: 0 2vw;
+}
+
+#correct, #incorrect {
+  visibility: hidden;
+}
+
+#bottom .option {
+  font-size: 7vw;
+  width: 10vw;
+  margin: 0 1vw;
+}
+
+#score {
+  position: absolute;
+  bottom: 0;
+  right: 1vh;
+  font-size: 8vh;
+}

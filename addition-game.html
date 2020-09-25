@@ -2,67 +2,20 @@
 <head>
   <script src="js/global.js"></script>
   <script src="js/utils/array-shuffle.js"></script>
-  <style>
-    #top, #bottom {
-      height: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #operator, #equals {
-      margin: 0 2vw;
-    }
-
-    #number-1, #number-2, #blank {
-      font-size: 10vw;
-    }
-
-    #blank {
-      border-bottom: solid 0.5vw black;
-      width: 10vw;
-      height: 10vw;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #result {
-      margin: 0 2vw;
-    }
-
-    #correct, #incorrect {
-      visibility: hidden;
-    }
-
-    #bottom .option {
-      font-size: 7vw;
-      width: 10vw;
-      margin: 0 1vw;
-    }
-
-    #score {
-      position: absolute;
-      bottom: 0;
-      right: 1vh;
-      font-size: 8vh;
-    }
-  </style>
+  <script src="js/equation-game.js"></script>
 </head>
 <body class="no-select">
   <script>
     const uuid = 'dc9adaf4-ff31-11ea-adc1-0242ac120002';
 
-    window.score = parseInt(localStorage.getItem(`${uuid}::score`)) || 0;
+    function operatorIcon() { return 'solid-plus'; }
 
-    function newProblem() {
+    function newValues() {
       window.number1 = Math.floor(Math.random() * 11);
       window.number2 = Math.floor(Math.random() * 11);
       window.answer = number1 + number2;
 
-      const options = (window.number1 === 0 && window.number2 === 0)
+      const options = (window.answer === 0)
         ? [0, 1, 2]
         : [
           window.number1 + window.number2 - 1,
@@ -71,82 +24,8 @@
         ];
 
       window.options = shuffle(options);
-
-      document.getElementById('number-1').innerText = window.number1;
-      document.getElementById('number-2').innerText = window.number2;
-
-      clearBottom();
-
-      const bottom = document.getElementById('bottom');
-      window.options.forEach((option) => {
-        const optionElement = document.createElement('div');
-        optionElement.classList.add('option', 'button');
-        optionElement.innerText = option;
-        optionElement.addEventListener('click', () => submitAnswer(option));
-        bottom.appendChild(optionElement);
-      });
     }
-
-    function clearBottom() {
-      document.getElementById('bottom').innerHTML = '';
-    }
-
-    function submitAnswer(answer) {
-      document.getElementById('blank').innerText = answer;
-      if (answer === window.answer) {
-        document.getElementById('incorrect').style.display = 'none';
-        document.getElementById('correct').style.visibility = 'visible';
-
-        window.score += 1;
-        localStorage.setItem('score', window.score);
-        updateScore();
-      } else {
-        document.getElementById('correct').style.display = 'none';
-        document.getElementById('incorrect').style.visibility = 'visible';
-      }
-
-      clearBottom();
-
-      const newProblemButton = document.createElement('div');
-      newProblemButton.classList.add('button', 'solid-sync-alt', 'icon-7');
-      newProblemButton.addEventListener('click', () => {
-        document.getElementById('blank').innerText = '';
-
-        document.getElementById('correct').style.display = 'block';
-        document.getElementById('incorrect').style.display = 'block';
-        document.getElementById('correct').style.visibility = 'hidden';
-        document.getElementById('incorrect').style.visibility = 'hidden';
-        newProblem();
-      });
-      document.getElementById('bottom').appendChild(newProblemButton);
-    }
-
-    function updateScore() {
-      document.getElementById('score').innerText = window.score;
-    }
-
-    window.addEventListener('load', () => {
-      updateScore();
-      newProblem();
-    });
   </script>
-
-  <div id="top">
-    <div id="number-1"></div>
-    <div id="operator" class="solid-plus icon-4"></div>
-    <div id="number-2"></div>
-    <div id="equals" class="solid-equals icon-4"></div>
-    <div id="blank"></div>
-    <div id="result">
-      <div id="correct" class="solid-check icon-7 icon-green"></div>
-      <div id="incorrect" class="solid-times icon-7 icon-red"></div>
-    </div>
-  </div>
-
-  <div id="bottom">
-  </div>
-
-  <div id="score">0</div>
 
 </body>
 </html>

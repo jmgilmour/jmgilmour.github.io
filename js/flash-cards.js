@@ -1,3 +1,5 @@
+addToHead('link', { rel: 'stylesheet', href: 'css/flash-cards.css'});
+
 function addFlashcardLayout() {
   const content = document.createElement('div');
   content.id = 'content';
