@@ -1,64 +1,23 @@
 <html>
 <head>
   <script src="js/global.js"></script>
+  <script src="js/utils/weighted-rand.js"></script>
+  <script src="js/flash-cards.js"></script>
   <link rel="stylesheet" href="css/flash-cards.css">
 </head>
 <body>
   <script>
     window.random = weightedRand({0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:6, 7:6, 8:6, 9:6});
 
-    function weightedRand(spec) {
-      var i, j, table=[];
-      for (i in spec) {
-        // The constant 10 below should be computed based on the
-        // weights in the spec for a correct and optimal table size.
-        // E.g. the spec {0:0.999, 1:0.001} will break this impl.
-        for (j=0; j<spec[i]*10; j++) {
-          table.push(i);
-        }
-      }
-      return function() {
-        return table[Math.floor(Math.random() * table.length)];
-      }
-    }
-
-    function newCard() {
+    function newValues() {
       window.last = window.second || -1;
 
       window.first = window.random();
       do {
         window.second = Math.floor(Math.random() * 10);
-      } while (window.second > window.first || window.second === window.last)
-      window.difference = first - second;
-
-      document.querySelector('#card-front .top').innerText = window.first;
-      document.querySelector('#card-front .middle .number').innerText = window.second;
+      } while (window.second > window.first || window.second === window.last);
+      window.result = window.first - window.second;
     }
-
-    function flipCard() {
-      document.querySelector('#card-back .top').innerText = window.first;
-      document.querySelector('#card-back .middle .number').innerText = window.second;
-      document.querySelector('#card-back .bottom').innerText = window.difference;
-
-      document.getElementById('flip-card').classList.toggle('flipped');
-
-      if (!document.getElementById('flip-card').classList.contains('flipped')) {
-        newCard();
-      }
-    }
-
-    window.addEventListener('click', ({ screenX }) => {
-      flipCard();
-    });
-
-    window.addEventListener('keydown', ({ keyCode }) => {
-      if (keyCode !== 32) return;
-      flipCard();
-    });
-
-    window.addEventListener('load', () => {
-      newCard();
-    });
   </script>
 
   <div id="content">
