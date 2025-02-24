@@ -1,12 +1,10 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-  <title>US ~ So Far ~</title>
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   <style type="text/tailwindcss">
     :root {
@@ -80,6 +78,7 @@
   import { createApp } from 'https://unpkg.com/petite-vue?module'
 
   const Icon = {
+    CAKE: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M86.4 5.5L61.8 47.6C58 54.1 56 61.6 56 69.2L56 72c0 22.1 17.9 40 40 40s40-17.9 40-40l0-2.8c0-7.6-2-15-5.8-21.6L105.6 5.5C103.6 2.1 100 0 96 0s-7.6 2.1-9.6 5.5zm128 0L189.8 47.6c-3.8 6.5-5.8 14-5.8 21.6l0 2.8c0 22.1 17.9 40 40 40s40-17.9 40-40l0-2.8c0-7.6-2-15-5.8-21.6L233.6 5.5C231.6 2.1 228 0 224 0s-7.6 2.1-9.6 5.5zM317.8 47.6c-3.8 6.5-5.8 14-5.8 21.6l0 2.8c0 22.1 17.9 40 40 40s40-17.9 40-40l0-2.8c0-7.6-2-15-5.8-21.6L361.6 5.5C359.6 2.1 356 0 352 0s-7.6 2.1-9.6 5.5L317.8 47.6zM128 176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 48c-35.3 0-64 28.7-64 64l0 71c8.3 5.2 18.1 9 28.8 9c13.5 0 27.2-6.1 38.4-13.4c5.4-3.5 9.9-7.1 13-9.7c1.5-1.3 2.7-2.4 3.5-3.1c.4-.4 .7-.6 .8-.8l.1-.1s0 0 0 0s0 0 0 0s0 0 0 0s0 0 0 0c3.1-3.2 7.4-4.9 11.9-4.8s8.6 2.1 11.6 5.4c0 0 0 0 0 0s0 0 0 0l.1 .1c.1 .1 .4 .4 .7 .7c.7 .7 1.7 1.7 3.1 3c2.8 2.6 6.8 6.1 11.8 9.5c10.2 7.1 23 13.1 36.3 13.1s26.1-6 36.3-13.1c5-3.5 9-6.9 11.8-9.5c1.4-1.3 2.4-2.3 3.1-3c.3-.3 .6-.6 .7-.7l.1-.1c3-3.5 7.4-5.4 12-5.4s9 2 12 5.4l.1 .1c.1 .1 .4 .4 .7 .7c.7 .7 1.7 1.7 3.1 3c2.8 2.6 6.8 6.1 11.8 9.5c10.2 7.1 23 13.1 36.3 13.1s26.1-6 36.3-13.1c5-3.5 9-6.9 11.8-9.5c1.4-1.3 2.4-2.3 3.1-3c.3-.3 .6-.6 .7-.7l.1-.1c2.9-3.4 7.1-5.3 11.6-5.4s8.7 1.6 11.9 4.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0l.1 .1c.2 .2 .4 .4 .8 .8c.8 .7 1.9 1.8 3.5 3.1c3.1 2.6 7.5 6.2 13 9.7c11.2 7.3 24.9 13.4 38.4 13.4c10.7 0 20.5-3.9 28.8-9l0-71c0-35.3-28.7-64-64-64l0-48c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 48-64 0 0-48c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 48-64 0 0-48zM448 394.6c-8.5 3.3-18.2 5.4-28.8 5.4c-22.5 0-42.4-9.9-55.8-18.6c-4.1-2.7-7.8-5.4-10.9-7.8c-2.8 2.4-6.1 5-9.8 7.5C329.8 390 310.6 400 288 400s-41.8-10-54.6-18.9c-3.5-2.4-6.7-4.9-9.4-7.2c-2.7 2.3-5.9 4.7-9.4 7.2C201.8 390 182.6 400 160 400s-41.8-10-54.6-18.9c-3.7-2.6-7-5.2-9.8-7.5c-3.1 2.4-6.8 5.1-10.9 7.8C71.2 390.1 51.3 400 28.8 400c-10.6 0-20.3-2.2-28.8-5.4L0 480c0 17.7 14.3 32 32 32l384 0c17.7 0 32-14.3 32-32l0-85.4z"/></svg>',
     CAMERA: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path style="fill:var(--dark)" d="M149.1 64.8L138.7 96 64 96C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-74.7 0L362.9 64.8C356.4 45.2 338.1 32 317.4 32L194.6 32c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></svg>',
     CLAPPERBOARD: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="white" d="M448 32l-86.1 0-1 1-127 127 92.1 0 1-1L453.8 32.3c-1.9-.2-3.8-.3-5.8-.3zm64 128l0-64c0-15.1-5.3-29.1-14-40l-104 104L512 160zM294.1 32l-92.1 0-1 1L73.9 160l92.1 0 1-1 127-127zM64 32C28.7 32 0 60.7 0 96l0 64 6.1 0 1-1 127-127L64 32zM512 192L0 192 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-224z"/></svg>',
     GAMEPAD: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="white" d="M192 64C86 64 0 150 0 256S86 448 192 448l256 0c106 0 192-86 192-192s-86-192-192-192L192 64zM496 168a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM392 304a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24l0 32 32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0 0 32c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-32-32 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l32 0 0-32z"/></svg>',
@@ -93,8 +92,8 @@
     return {
       stats: [
         { before: 'Friends for', stat: Math.ceil(diff / (1000 * 3600 * 24)), after: 'days' },
-        { stat: 9895, after: 'messsages', more: true },
-        { stat: 179, after: 'hours on call', more: true },
+        { stat: 11754, after: 'messsages', more: true },
+        { stat: 213, after: 'hours on call', more: true }, // as of 2/24 @ 10am
       ],
     }
   }
@@ -116,7 +115,7 @@
       Icon,
       movies: [
         { poster: 'movies/groundhog-day.jpg', date: new Date('2/13/2025') },
-        { poster: 'movies/back-to-the-future.jpg', date: new Date('2/8/2025') },
+        { poster: 'movies/back-to-the-future.jpg', date: new Date('2/8/2015') },
         { poster: 'movies/star-wars-return-of-the-jedi.jpg', date: new Date('2/2/2025') },
         { poster: 'movies/star-wars-the-empire-strikes-back.jpg', date: new Date('1/19/2024') },
       ],
@@ -124,52 +123,66 @@
   }
 
   function Timeline() {
-    return {
-      events: [
-        {
-          dates: [new Date('2/11/2025')],
-          description: '<div class="flex justify-center rounded" style="background-color:#1a110a"><img width="360px" src="./first-phone-call.jpg"/></div>',
-          event: 'First Phone Call',
-          icon: Icon.PHONE,
-        },
-        {
-          dates: [new Date('1/30/2025')],
-          description: '<div class="flex justify-center rounded" style="background-color:#1a110a"><img width="360px" src="./first-text.jpg"/></div>',
-          event: 'First Text',
-          icon: Icon.MESSAGE,
-        },
-        {
-          dates: [new Date('1/21/2025'), new Date('1/22/2025')],
-          description: '<div class="rounded" style="background-color:#323338"><img class="rounded" src="./started-dating.png"></div>',
-          event: 'Started Dating',
-          icon: Icon.HEART,
-        },
-        {
-          dates: [new Date('1/17/2025')],
-          description: '<img class="rounded" src="./first-selfie-jon.jpg">',
-          event: 'First Selfie - Jon',
-          icon: Icon.CAMERA,
-        },
-        {
-          dates: [new Date('1/9/2025')],
-          description: '<img class="rounded" src="./first-selfie-megs.jpg">',
-          event: 'First Selfie - Megs',
-          icon: Icon.CAMERA,
-        },
-        {
-          dates: [new Date('1/9/2025')],
-          description: '<div class="rounded" style="background-color:#323338"><img class="rounded" src="./first-discord-call.png"></div>',
-          event: 'First Discord Call',
-          icon: Icon.PHONE,
-        },
-        {
-          dates: [new Date('1/3/2025')],
-          description: '<div class="rounded" style="background-color:#323338"><img class="rounded" src="./first-dm.png"></div>',
-          event: 'First DM',
-          icon: Icon.MESSAGE,
-        },
-      ],
-    }
+    const monthAnniversaries = Array.from({ length: 11 }, (x, i) => i + 2)
+      .map(month => new Date(`${month}/22/2025`))
+      .filter(date => date < new Date())
+      .map((date, index) => ({
+        dates: [date],
+        event: `${index + 1} Month Anniversary`,
+        icon: Icon.CAKE,
+      }));
+    console.log('>>>>>', monthAnniversaries)
+    // for (let i = 2; i <= 12; i += 1) {
+    //   monthAnniversaries.push(new Date(`${i}/22/2025`))
+    // }
+
+    const events = [
+      ...monthAnniversaries,
+      {
+        dates: [new Date('2/11/2025')],
+        description: '<div class="flex justify-center rounded" style="background-color:#1a110a"><img width="360px" src="./first-phone-call.jpg"/></div>',
+        event: 'First Phone Call',
+        icon: Icon.PHONE,
+      },
+      {
+        dates: [new Date('1/30/2025')],
+        description: '<div class="flex justify-center rounded" style="background-color:#1a110a"><img width="360px" src="./first-text.jpg"/></div>',
+        event: 'First Text',
+        icon: Icon.MESSAGE,
+      },
+      {
+        dates: [new Date('1/21/2025'), new Date('1/22/2025')],
+        description: '<div class="rounded" style="background-color:#323338"><img class="rounded" src="./started-dating.png"></div>',
+        event: 'Started Dating',
+        icon: Icon.HEART,
+      },
+      {
+        dates: [new Date('1/17/2025')],
+        description: '<img class="rounded" src="./first-selfie-jon.jpg">',
+        event: 'First Selfie - Jon',
+        icon: Icon.CAMERA,
+      },
+      {
+        dates: [new Date('1/9/2025')],
+        description: '<img class="rounded" src="./first-selfie-megs.jpg">',
+        event: 'First Selfie - Megs',
+        icon: Icon.CAMERA,
+      },
+      {
+        dates: [new Date('1/9/2025')],
+        description: '<div class="rounded" style="background-color:#323338"><img class="rounded" src="./first-discord-call.png"></div>',
+        event: 'First Discord Call',
+        icon: Icon.PHONE,
+      },
+      {
+        dates: [new Date('1/3/2025')],
+        description: '<div class="rounded" style="background-color:#323338"><img class="rounded" src="./first-dm.png"></div>',
+        event: 'First DM',
+        icon: Icon.MESSAGE,
+      },
+    ].sort((a, b) => b.dates.at(0) - a.dates.at(0))
+
+    return { events }
   }
 
   createApp({
@@ -219,11 +232,11 @@
               {{ event }}
             </div>
 
-            <div class="font-light" v-html="description"></div>
+            <div class="font-light" v-html="description || ''"></div>
 
             <div class="font-light self-end monospace" style="font-size:0.6rem">
               <span v-for="date in dates" class="date">
-                {{ date.toLocaleDateString("en-US") }}
+                {{ date.toLocaleDateString(navigator.language) }}
               </span>
             </div>
           </div>
@@ -239,7 +252,7 @@
 
         <div class="flex space-x-2 justify-center items-center">
           <div class="flex items-center space-x-1">
-            <img width="25" src="avatars/discord-jon.png" />
+            <img class="rounded-full" width="25" src="avatars/discord-jon.gif" />
             <span class="font-medium">
               jmgilmour
             </span>
@@ -298,7 +311,7 @@
           </div>
         
           <div class="flex items-center space-x-1.5">
-            <img width="25" src="avatars/steam-megs.gif" />
+            <img width="30" src="avatars/steam-megs.gif" />
             <span class="font-medium">
               LuckyyGuppy
             </span>
@@ -332,7 +345,7 @@
           <div v-for="movie in movies" class="flex flex-col items-center space-y-0.5 bg-secondary rounded-md border-2 border-secondary">
             <img class="w-28 h-42 rounded-md border-2 border-primary" :src="movie.poster">
             <span class="text-xs monospace" style="font-size:0.6rem">
-              {{ movie.date.toLocaleDateString("en-US") }}
+              {{ movie.date.toLocaleDateString(navigator.language) }}
             </span>
           </div>
         </div>
@@ -345,7 +358,7 @@
 
         <div class="flex space-x-2 justify-center items-center">
           <div class="flex items-center space-x-1.5">
-            <img class="rounded-full" width="25" src="avatars/spotify-jon.jpg" />
+            <img class="rounded-full" width="30" src="avatars/spotify-jon.jpg" />
             <span class="font-medium">
               jmgilmour
             </span>
@@ -356,7 +369,7 @@
           </div>
           
           <div class="flex items-center space-x-1.5">
-            <img class="rounded-full" style="object-fit: cover; width:25px; height:25px" src="avatars/spotify-megs.jpg" />
+            <img class="rounded-full" style="object-fit: cover; width:30px; height:30px" src="avatars/spotify-megs.jpg" />
             <span class="font-medium">
               Megs
             </span>
